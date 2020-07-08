@@ -9,6 +9,8 @@ var showFormBtn = document.querySelector('.show-form');
 var mainPosterView = document.querySelector('.main-poster');
 var posterFormView = document.querySelector('.poster-form');
 var savedPostersView = document.querySelector('.saved-posters');
+var showMainBtn = document.querySelector('.show-main');
+var backToMainBtn = document.querySelector('.back-to-main');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -121,8 +123,8 @@ function clickHandler(event) {
   if (event.target === showSavedBtn) {
     showSavePage()
   }
-  if (event.target === showRandomBtn) {
-    showRandomPage()
+  if (event.target === showMainBtn || event.target === backToMainBtn) {
+    backHome()
   }
   if (event.target === showFormBtn) {
     showFormPage()
@@ -153,7 +155,10 @@ function showSavePage() {
 
 }
 
-function showRandomPage() {
+function backHome() {
+  mainPosterView.classList.remove('hidden');
+  savedPostersView.classList.add('hidden');
+  posterFormView.classList.add('hidden');
 
 }
 
