@@ -127,6 +127,9 @@ function clickHandler(event) {
   if (event.target === showFormBtn) {
     showFormPage()
   }
+  if (event.target === showRandomBtn) {
+    randPoster()
+  }
 }
 
 
@@ -146,6 +149,7 @@ function displayPoster(poster) {
 
 function showSavePage() {
 
+
 }
 
 function showRandomPage() {
@@ -153,10 +157,10 @@ function showRandomPage() {
 }
 
 function showFormPage() {
-  console.log('Hello');
+  // console.log('Hello');
   posterFormView.classList.remove('hidden');
   mainPosterView.classList.add('hidden');
-  savedPostersView.classList.add('hidden');
+  // savedPostersView.classList.add('hidden');
 
 
 
