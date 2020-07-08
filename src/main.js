@@ -2,6 +2,11 @@
 var posterImg = document.querySelector('.poster-img');
 var posterTitle = document.querySelector('.poster-title');
 var posterQuote = document.querySelector('.poster-quote');
+var savePoster = document.querySelector('.save-poster');
+var showSaved = document.querySelector('.show-saved');
+var showRandom = document.querySelector('.show-random');
+var showForm = document.querySelector('.show-form');
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -106,7 +111,22 @@ var currentPoster;
 
 // event listeners go here 👇
 window.onload = randPoster; 
+window.addEventListener('click', clickHandler);
 // functions and event handlers go here 👇
+
+function clickHandler(event) {
+  if (event.target === showSaved) {
+    showSavePage()
+  }
+  if (event.target === showRandom) {
+    showRandomPage()
+  }
+  if (event.target === showForm) {
+    showFormPage()
+  }
+}
+
+
 function randPoster() {
   var randImg = images[getRandomIndex(images)];
   var randTitle = titles[getRandomIndex(titles)];
@@ -121,6 +141,8 @@ function displayPoster(poster) {
   posterTitle.innerText = poster.title;
   posterQuote.innerText = poster.quote
 }
+
+
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
