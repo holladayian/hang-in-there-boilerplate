@@ -2,10 +2,13 @@
 var posterImg = document.querySelector('.poster-img');
 var posterTitle = document.querySelector('.poster-title');
 var posterQuote = document.querySelector('.poster-quote');
-var savePoster = document.querySelector('.save-poster');
-var showSaved = document.querySelector('.show-saved');
-var showRandom = document.querySelector('.show-random');
-var showForm = document.querySelector('.show-form');
+var savePosterBtn = document.querySelector('.save-poster');
+var showSavedBtn = document.querySelector('.show-saved');
+var showRandomBtn = document.querySelector('.show-random');
+var showFormBtn = document.querySelector('.show-form');
+var mainPosterView = document.querySelector('.main-poster');
+var posterFormView = document.querySelector('.poster-form');
+var savedPostersView = document.querySelector('.saved-posters');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -115,13 +118,13 @@ window.addEventListener('click', clickHandler);
 // functions and event handlers go here 👇
 
 function clickHandler(event) {
-  if (event.target === showSaved) {
+  if (event.target === showSavedBtn) {
     showSavePage()
   }
-  if (event.target === showRandom) {
+  if (event.target === showRandomBtn) {
     showRandomPage()
   }
-  if (event.target === showForm) {
+  if (event.target === showFormBtn) {
     showFormPage()
   }
 }
@@ -136,13 +139,28 @@ function randPoster() {
 }
 
 function displayPoster(poster) {
-  console.log(poster.image);
   posterImg.setAttribute('src', poster.imageURL);
   posterTitle.innerText = poster.title;
   posterQuote.innerText = poster.quote
 }
 
+function showSavePage() {
 
+}
+
+function showRandomPage() {
+
+}
+
+function showFormPage() {
+  console.log('Hello');
+  posterFormView.classList.remove('hidden');
+  mainPosterView.classList.add('hidden');
+  savedPostersView.classList.add('hidden');
+
+
+
+}
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
