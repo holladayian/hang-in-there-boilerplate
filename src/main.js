@@ -148,7 +148,8 @@ function displayPoster(poster) {
 }
 
 function showSavePage() {
-
+  savedPostersView.classList.remove('hidden');
+  mainPosterView.classList.add('hidden');
 
 }
 
