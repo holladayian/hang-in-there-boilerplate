@@ -11,6 +11,10 @@ var posterFormView = document.querySelector('.poster-form');
 var savedPostersView = document.querySelector('.saved-posters');
 var showMainBtn = document.querySelector('.show-main');
 var backToMainBtn = document.querySelector('.back-to-main');
+var userImageUrl = document.querySelector('#poster-image-url');
+var userTitle = document.querySelector('#poster-title');
+var userPoster = document.querySelector('#poster-quote');
+var makePosterButton = document.querySelector('.make-poster');
 
 // we've provided you with some data to work with 👇
 var images = [
