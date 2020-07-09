@@ -2,6 +2,16 @@
 var posterImg = document.querySelector('.poster-img');
 var posterTitle = document.querySelector('.poster-title');
 var posterQuote = document.querySelector('.poster-quote');
+var savePosterBtn = document.querySelector('.save-poster');
+var showSavedBtn = document.querySelector('.show-saved');
+var showRandomBtn = document.querySelector('.show-random');
+var showFormBtn = document.querySelector('.show-form');
+var mainPosterView = document.querySelector('.main-poster');
+var posterFormView = document.querySelector('.poster-form');
+var savedPostersView = document.querySelector('.saved-posters');
+var showMainBtn = document.querySelector('.show-main');
+var backToMainBtn = document.querySelector('.back-to-main');
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -106,7 +116,25 @@ var currentPoster;
 
 // event listeners go here 👇
 window.onload = randPoster; 
+window.addEventListener('click', clickHandler);
 // functions and event handlers go here 👇
+
+function clickHandler(event) {
+  if (event.target === showSavedBtn) {
+    showSavePage()
+  }
+  if (event.target === showMainBtn || event.target === backToMainBtn) {
+    backHome()
+  }
+  if (event.target === showFormBtn) {
+    showFormPage()
+  }
+  if (event.target === showRandomBtn) {
+    randPoster()
+  }
+}
+
+
 function randPoster() {
   var randImg = images[getRandomIndex(images)];
   var randTitle = titles[getRandomIndex(titles)];
@@ -116,10 +144,32 @@ function randPoster() {
 }
 
 function displayPoster(poster) {
-  console.log(poster.image);
   posterImg.setAttribute('src', poster.imageURL);
   posterTitle.innerText = poster.title;
   posterQuote.innerText = poster.quote
+}
+
+function showSavePage() {
+  savedPostersView.classList.remove('hidden');
+  mainPosterView.classList.add('hidden');
+
+}
+
+function backHome() {
+  mainPosterView.classList.remove('hidden');
+  savedPostersView.classList.add('hidden');
+  posterFormView.classList.add('hidden');
+
+}
+
+function showFormPage() {
+  // console.log('Hello');
+  posterFormView.classList.remove('hidden');
+  mainPosterView.classList.add('hidden');
+  // savedPostersView.classList.add('hidden');
+
+
+
 }
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
