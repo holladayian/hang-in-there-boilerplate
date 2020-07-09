@@ -11,6 +11,10 @@ var posterFormView = document.querySelector('.poster-form');
 var savedPostersView = document.querySelector('.saved-posters');
 var showMainBtn = document.querySelector('.show-main');
 var backToMainBtn = document.querySelector('.back-to-main');
+var userImageUrl = document.querySelector('#poster-image-url');
+var userTitle = document.querySelector('#poster-title');
+var userQuote = document.querySelector('#poster-quote');
+var makePosterButton = document.querySelector('.make-poster');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -132,6 +136,9 @@ function clickHandler(event) {
   if (event.target === showRandomBtn) {
     randPoster()
   }
+  if (event.target === makePosterButton) {
+    userInput(event)
+  }
 }
 
 
@@ -143,11 +150,13 @@ function randPoster() {
   displayPoster(currentPoster);
 }
 
+
 function displayPoster(poster) {
   posterImg.setAttribute('src', poster.imageURL);
   posterTitle.innerText = poster.title;
   posterQuote.innerText = poster.quote
 }
+
 
 function showSavePage() {
   savedPostersView.classList.remove('hidden');
@@ -159,18 +168,36 @@ function backHome() {
   mainPosterView.classList.remove('hidden');
   savedPostersView.classList.add('hidden');
   posterFormView.classList.add('hidden');
-
 }
+
 
 function showFormPage() {
   // console.log('Hello');
   posterFormView.classList.remove('hidden');
   mainPosterView.classList.add('hidden');
   // savedPostersView.classList.add('hidden');
-
-
-
 }
+
+
+function userInput(event) {
+  event.preventDefault();
+  console.log('hey there');
+  var imageUser = userImageUrl.value;
+  var titleUser = userTitle.value;
+  var quoteUser = userQuote.value;
+  currentPoster = new Poster(imageUser, titleUser, quoteUser);
+  //form.reset();
+  backHome();
+  displayPoster(currentPoster);
+  pushUserInput(imageUser, titleUser, quoteUser)
+}
+
+function pushUserInput(userImageUrl, userTitle, userQuote) {
+  images.push(userImageUrl.value);
+  titles.push(userTitle.value);
+  quotes.push(userQuote.value);
+}
+
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
