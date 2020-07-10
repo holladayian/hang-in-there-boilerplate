@@ -193,13 +193,13 @@ function userInput(event) {
   var titleUser = userTitle.value;
   var quoteUser = userQuote.value;
   currentPoster = new Poster(imageUser, titleUser, quoteUser);
-  formSelect.reset();
   backHome();
   displayPoster(currentPoster);
-  pushUserInput()
+  pushUserInput();
+  formSelect.reset();
 }
 
-function pushUserInput() {
+function pushUserInput(posterImg, posterTitle, posterQuote) {
   images.push(userImageUrl.value);
   titles.push(userTitle.value);
   quotes.push(userQuote.value);
