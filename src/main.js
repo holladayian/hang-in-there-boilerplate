@@ -181,7 +181,6 @@ function showFormPage() {
 
 function userInput(event) {
   event.preventDefault();
-  console.log('hey there');
   var imageUser = userImageUrl.value;
   var titleUser = userTitle.value;
   var quoteUser = userQuote.value;
@@ -189,13 +188,14 @@ function userInput(event) {
   //form.reset();
   backHome();
   displayPoster(currentPoster);
-  pushUserInput(imageUser, titleUser, quoteUser)
+  pushUserInput()
 }
 
-function pushUserInput(userImageUrl, userTitle, userQuote) {
+function pushUserInput() {
   images.push(userImageUrl.value);
   titles.push(userTitle.value);
   quotes.push(userQuote.value);
+  console.log(titles);
 }
 
 // (we've provided one for you to get you started)!
