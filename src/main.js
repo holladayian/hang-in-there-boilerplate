@@ -114,8 +114,12 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
+
+
 var savedPosters = [
 ];
+
+
 var currentPoster;
 
 // event listeners go here 👇
@@ -138,6 +142,9 @@ function clickHandler(event) {
   }
   if (event.target === makePosterButton) {
     userInput(event)
+  }
+  if (event.target === savePosterBtn) {
+    saveNewPoster()
   }
 }
 
@@ -197,6 +204,15 @@ function pushUserInput() {
   quotes.push(userQuote.value);
   console.log(titles);
 }
+
+function saveNewPoster() {
+  if (!savedPosters.includes(currentPoster)) {
+  savedPosters.push(currentPoster)
+  }
+}
+// save currentPoster to the savedPosters array.
+// if that instance already exists, do not save.
+
 
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
