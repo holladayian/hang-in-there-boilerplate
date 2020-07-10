@@ -15,6 +15,7 @@ var userImageUrl = document.querySelector('#poster-image-url');
 var userTitle = document.querySelector('#poster-title');
 var userQuote = document.querySelector('#poster-quote');
 var makePosterButton = document.querySelector('.make-poster');
+var formSelect = document.querySelector('form');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -192,7 +193,7 @@ function userInput(event) {
   var titleUser = userTitle.value;
   var quoteUser = userQuote.value;
   currentPoster = new Poster(imageUser, titleUser, quoteUser);
-  //form.reset();
+  formSelect.reset();
   backHome();
   displayPoster(currentPoster);
   pushUserInput()
@@ -207,11 +208,11 @@ function pushUserInput() {
 
 function saveNewPoster() {
   if (!savedPosters.includes(currentPoster)) {
-  savedPosters.push(currentPoster)
+  savedPosters.push(currentPoster);
+  console.log(savedPosters)
   }
 }
-// save currentPoster to the savedPosters array.
-// if that instance already exists, do not save.
+
 
 
 // (we've provided one for you to get you started)!
