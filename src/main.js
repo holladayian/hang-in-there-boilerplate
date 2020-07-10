@@ -15,6 +15,8 @@ var userImageUrl = document.querySelector('#poster-image-url');
 var userTitle = document.querySelector('#poster-title');
 var userQuote = document.querySelector('#poster-quote');
 var makePosterButton = document.querySelector('.make-poster');
+var formSelect = document.querySelector('form');
+var posterGrid = document.querySelector('.saved-posters-grid');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -114,8 +116,12 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
+
+
 var savedPosters = [
 ];
+
+
 var currentPoster;
 
 // event listeners go here 👇
@@ -125,7 +131,8 @@ window.addEventListener('click', clickHandler);
 
 function clickHandler(event) {
   if (event.target === showSavedBtn) {
-    showSavePage()
+    showSavePage();
+    showPosterGrid();
   }
   if (event.target === showMainBtn || event.target === backToMainBtn) {
     backHome()
@@ -138,6 +145,9 @@ function clickHandler(event) {
   }
   if (event.target === makePosterButton) {
     userInput(event)
+  }
+  if (event.target === savePosterBtn) {
+    saveNewPoster()
   }
 }
 
@@ -154,7 +164,7 @@ function randPoster() {
 function displayPoster(poster) {
   posterImg.setAttribute('src', poster.imageURL);
   posterTitle.innerText = poster.title;
-  posterQuote.innerText = poster.quote
+  posterQuote.innerText = poster.quote;
 }
 
 
@@ -172,31 +182,51 @@ function backHome() {
 
 
 function showFormPage() {
-  // console.log('Hello');
   posterFormView.classList.remove('hidden');
   mainPosterView.classList.add('hidden');
-  // savedPostersView.classList.add('hidden');
 }
 
 
 function userInput(event) {
   event.preventDefault();
-  console.log('hey there');
   var imageUser = userImageUrl.value;
   var titleUser = userTitle.value;
   var quoteUser = userQuote.value;
   currentPoster = new Poster(imageUser, titleUser, quoteUser);
-  //form.reset();
   backHome();
   displayPoster(currentPoster);
-  pushUserInput(imageUser, titleUser, quoteUser)
+  pushUserInput();
+  formSelect.reset();
 }
 
-function pushUserInput(userImageUrl, userTitle, userQuote) {
+function pushUserInput(posterImg, posterTitle, posterQuote) {
   images.push(userImageUrl.value);
   titles.push(userTitle.value);
   quotes.push(userQuote.value);
+  console.log(titles);
 }
+
+function saveNewPoster() {
+  if (!savedPosters.includes(currentPoster)) {
+  savedPosters.push(currentPoster);
+  console.log(savedPosters)
+  }
+}
+
+function showPosterGrid() {
+  posterGrid.innerText = ''
+  for (var i = 0; i < savedPosters.length; i++) {
+    var newSavedPoster = `
+      <section class='mini-poster' data-id=${savedPosters[i].id}>
+        <img src=${savedPosters[i].imageURL}>
+        <h2>${savedPosters[i].title}</h2>
+        <h4>${savedPosters[i].quote}</h4>
+      </section>
+    `;
+    posterGrid.insertAdjacentHTML('afterbegin', newSavedPoster)
+  }
+}
+
 
 // (we've provided one for you to get you started)!
 function getRandomIndex(array) {
