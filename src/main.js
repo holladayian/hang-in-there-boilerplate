@@ -230,11 +230,17 @@ function showPosterGrid() {
 
 function deletePoster(event) {
   console.log('mac and cheese');
-  for (var i = 0; i < savedPosters.length; i++) {
-    if (event.target === savedPosters[i]) {
-    savedPosters.splice(i,1)
+    if (event.target(savedPosters)) {
+      for (var i = 0; i < savedPosters.length; i++) {
+        
+        // Uncaught TypeError: event.target is not a function
+        // at HTMLElement.deletePoster (main.js:234)
+
+        if (event.target === savedPosters[i]) {
+          savedPosters.splice(i,1)
   }
   }
+}
 }
 
 
