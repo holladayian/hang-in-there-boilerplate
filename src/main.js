@@ -204,13 +204,11 @@ function pushUserInput(posterImg, posterTitle, posterQuote) {
   images.push(userImageUrl.value);
   titles.push(userTitle.value);
   quotes.push(userQuote.value);
-  console.log(titles);
 }
 
 function saveNewPoster() {
   if (!savedPosters.includes(currentPoster)) {
   savedPosters.push(currentPoster);
-  console.log(savedPosters)
   }
 }
 
@@ -229,19 +227,17 @@ function showPosterGrid() {
 }
 
 function deletePoster(event) {
-  console.log('mac and cheese');
-    if (event.target(savedPosters)) {
-      for (var i = 0; i < savedPosters.length; i++) {
-        
-        // Uncaught TypeError: event.target is not a function
-        // at HTMLElement.deletePoster (main.js:234)
+  if (event.target.closest(".mini-poster")) {
+    var savedPostersHTML = event.target.closest(".mini-poster");
+    for (var i = 0; i < savedPosters.length; i++) {
+      if (savedPosters[i].id === Number(savedPostersHTML.dataset.id)) {
+        savedPosters.splice(i,1);
+      }
+    }
+    showPosterGrid()
+  }
+}
 
-        if (event.target === savedPosters[i]) {
-          savedPosters.splice(i,1)
-  }
-  }
-}
-}
 
 
 
