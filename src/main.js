@@ -127,6 +127,7 @@ var currentPoster;
 // event listeners go here 👇
 window.onload = randPoster; 
 window.addEventListener('click', clickHandler);
+posterGrid.addEventListener('dblclick', deletePoster);
 // functions and event handlers go here 👇
 
 function clickHandler(event) {
@@ -226,6 +227,16 @@ function showPosterGrid() {
     posterGrid.insertAdjacentHTML('afterbegin', newSavedPoster)
   }
 }
+
+function deletePoster(event) {
+  console.log('mac and cheese');
+  for (var i = 0; i < savedPosters.length; i++) {
+    if (event.target === savedPosters[i]) {
+    savedPosters.splice(i,1)
+  }
+  }
+}
+
 
 
 // (we've provided one for you to get you started)!
