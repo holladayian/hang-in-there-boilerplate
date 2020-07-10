@@ -16,6 +16,7 @@ var userTitle = document.querySelector('#poster-title');
 var userQuote = document.querySelector('#poster-quote');
 var makePosterButton = document.querySelector('.make-poster');
 var formSelect = document.querySelector('form');
+var posterGrid = document.querySelector('.saved-posters-grid');
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -130,7 +131,8 @@ window.addEventListener('click', clickHandler);
 
 function clickHandler(event) {
   if (event.target === showSavedBtn) {
-    showSavePage()
+    showSavePage();
+    showPosterGrid();
   }
   if (event.target === showMainBtn || event.target === backToMainBtn) {
     backHome()
@@ -162,7 +164,7 @@ function randPoster() {
 function displayPoster(poster) {
   posterImg.setAttribute('src', poster.imageURL);
   posterTitle.innerText = poster.title;
-  posterQuote.innerText = poster.quote
+  posterQuote.innerText = poster.quote;
 }
 
 
@@ -180,10 +182,8 @@ function backHome() {
 
 
 function showFormPage() {
-  // console.log('Hello');
   posterFormView.classList.remove('hidden');
   mainPosterView.classList.add('hidden');
-  // savedPostersView.classList.add('hidden');
 }
 
 
@@ -213,6 +213,19 @@ function saveNewPoster() {
   }
 }
 
+function showPosterGrid() {
+  posterGrid.innerText = ''
+  for (var i = 0; i < savedPosters.length; i++) {
+    var newSavedPoster = `
+      <section class='mini-poster' data-id=${savedPosters[i].id}>
+        <img src=${savedPosters[i].imageURL}>
+        <h2>${savedPosters[i].title}</h2>
+        <h4>${savedPosters[i].quote}</h4>
+      </section>
+    `;
+    posterGrid.insertAdjacentHTML('afterbegin', newSavedPoster)
+  }
+}
 
 
 // (we've provided one for you to get you started)!
