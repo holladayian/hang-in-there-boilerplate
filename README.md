@@ -31,6 +31,7 @@ We designed the functionality of a webpage using JavaScript with some HTML. Most
 - Having good communication and teamwork (we like working with each other!)
 - We both stuck to our schedule fairly strictly, letting us plan out parts of the project efficiently.
 - We both feel that we have a better understanding of the git workflow, and how to use git during collaboration.
+- Our code was produced efficiently enough to allow us time to work towards level 4 goals according to the rubric.
 
 
 ## Challenges
@@ -46,3 +47,25 @@ https://github.com/kathrynljackson - Kathryn Jackson
 https://github.com/holladayian - Ian Holladay
 
 ## Pictures & Gifs
+
+This is a picture of our home page. It will load a randomly selected image, title, and quote to create an inspirational poster.
+<br />
+![image of home page](assets/hang-in-there-screenshots/hang-in-it1-1.png)
+<br />
+
+ This is the User Input View. Users can input their own image, title, and quote to create a personalized inspirational poster.
+ <br />
+ ![image of user input view](assets/hang-in-there-screenshots/hang-in-it1-3.png)
+ <br />
+
+ Both randomly generated posters and user-created posters can be saved.
+ <br />
+ ![image of saved posters page](assets/hang-in-there-screenshots/hang-in-it4-1.png)
+ <br />
+ ![image of saved posters with user poster](assets/hang-in-there-screenshots/hang-in-it4-2.png)
+ <br />
+
+Double clicking on a poster will delete it from the Saved Posters view.
+<br />
+![image of home page](assets/hang-in-there-screenshots/hang-in-it4-3.png)
+<br />
