@@ -60,12 +60,12 @@ This is a picture of our home page. It will load a randomly selected image, titl
 
  Both randomly generated posters and user-created posters can be saved.
  <br />
- ![image of saved posters page](assets/hang-in-there-screenshots/hang-in-it4-1.png)
+ ![image of saved posters page](assets/hang-in-there-screenshots/hang-in-it4.1-1.png)
  <br />
- ![image of saved posters with user poster](assets/hang-in-there-screenshots/hang-in-it4-2.png)
+ ![image of saved posters with user poster](assets/hang-in-there-screenshots/hang-in-it4.1-2.png)
  <br />
 
 Double clicking on a poster will delete it from the Saved Posters view.
 <br />
-![image of home page](assets/hang-in-there-screenshots/hang-in-it4-3.png)
+![image of home page](assets/hang-in-there-screenshots/hang-in-it4.1-3.png)
 <br />
