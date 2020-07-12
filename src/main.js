@@ -1,4 +1,3 @@
-// query selector variables go here 👇
 var posterImg = document.querySelector('.poster-img');
 var posterTitle = document.querySelector('.poster-title');
 var posterQuote = document.querySelector('.poster-quote');
@@ -18,8 +17,6 @@ var showMainBtn = document.querySelector('.show-main');
 var backToMainBtn = document.querySelector('.back-to-main');
 var savePosterBtn = document.querySelector('.save-poster');
 
-// we've provided you with some data to work with 👇
-var currentPoster;
 var images = [
   "./assets/bees.jpg",
   "./assets/bridge.jpg",
@@ -118,33 +115,38 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 var savedPosters = [];
+var currentPoster;
 
-// event listeners go here 👇
+
 window.addEventListener('load', randPoster); 
 window.addEventListener('click', clickHandler);
 posterGrid.addEventListener('dblclick', deletePoster);
 
-// functions and event handlers go here 👇
+
 function clickHandler(event) {
   if (event.target === showSavedBtn) {
     showSavePage();
-    showPosterGrid()
+    showPosterGrid();
   }
   if (event.target === showMainBtn || event.target === backToMainBtn) {
-    backHome()
+    backHome();
   }
   if (event.target === showFormBtn) {
-    showFormPage()
+    showFormPage();
   }
   if (event.target === showRandomBtn) {
-    randPoster()
+    randPoster();
   }
   if (event.target === makePosterBtn) {
     captureUserInput(event)
   }
   if (event.target === savePosterBtn) {
-    saveNewPoster()
+    saveNewPoster();
   }
+}
+
+function getRandomIndex(array) {
+  return Math.floor(Math.random() * array.length);
 }
 
 
@@ -213,7 +215,7 @@ function saveNewPoster() {
 
 
 function showPosterGrid() {
-  posterGrid.innerText = ''
+  posterGrid.innerText = '';
   for (var i = 0; i < savedPosters.length; i++) {
     var newSavedPoster = `
       <section class='mini-poster' data-id=${savedPosters[i].id}>
@@ -222,24 +224,19 @@ function showPosterGrid() {
         <h4>${savedPosters[i].quote}</h4>
       </section>
     `;
-    posterGrid.insertAdjacentHTML('afterbegin', newSavedPoster)
+    posterGrid.insertAdjacentHTML('afterbegin', newSavedPoster);
   }
 }
 
 
 function deletePoster(event) {
-  if (event.target.closest(".mini-poster")) {
-    var savedPostersHTML = event.target.closest(".mini-poster");
+  if (event.target.closest('.mini-poster')) {
+    var savedPostersHTML = event.target.closest('.mini-poster');
     for (var i = 0; i < savedPosters.length; i++) {
       if (savedPosters[i].id === Number(savedPostersHTML.dataset.id)) {
         savedPosters.splice(i,1);
       }
     }
-    showPosterGrid()
+    showPosterGrid();
   }
-}
-
-// (we've provided one for you to get you started)!
-function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
 }
