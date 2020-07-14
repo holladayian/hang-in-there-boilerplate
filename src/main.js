@@ -1,3 +1,5 @@
+//Query selectors allow you to access HTML elements in the Javascript using a variable.
+
 var posterImg = document.querySelector('.poster-img');
 var posterTitle = document.querySelector('.poster-title');
 var posterQuote = document.querySelector('.poster-quote');
@@ -17,6 +19,9 @@ var showMainBtn = document.querySelector('.show-main');
 var backToMainBtn = document.querySelector('.back-to-main');
 var savePosterBtn = document.querySelector('.save-poster');
 
+//These five variables were given to us.
+//These allow us to acess the arrays that hold the data for our posters and save that
+//data in a separate array to be displayed as the poster.
 var images = [
   "./assets/bees.jpg",
   "./assets/bridge.jpg",
@@ -117,12 +122,14 @@ var quotes = [
 var savedPosters = [];
 var currentPoster;
 
-
+//Event listeners call a function based on what event is being
+//passed in as the argument. Our code does not listen to line 130, because
+//we want it to target the poster grid specifically.
 window.addEventListener('load', randPoster); 
 window.addEventListener('click', clickHandler);
 posterGrid.addEventListener('dblclick', deletePoster);
 
-
+//Click handlers specify which functions to run based on the target location.
 function clickHandler(event) {
   if (event.target === showSavedBtn) {
     showSavePage();
@@ -145,11 +152,16 @@ function clickHandler(event) {
   }
 }
 
+// GIVEN: This function takes the length of the array and multiplies it by a random Number
+//between 0 and 1, then uses Math.floor to round the product down. The reason that we round
+//this down is because arrays start at index 0.
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-
+// This function instanciates a new poster in the Poster class. We pass in the arguments
+// of the random indices from the images, titles, and quotes arrays. Then, we run the
+// displayPoster function and the current poster is displayed.
 function randPoster() {
   currentPoster = new Poster(
     images[getRandomIndex(images)],
