@@ -171,33 +171,47 @@ function randPoster() {
   displayPoster(currentPoster);
 }
 
-
+// This function is called within other functions. It reassigns each attribute
+// on the DOM.
 function displayPoster(poster) {
   posterImg.setAttribute('src', poster.imageURL);
   posterTitle.innerText = poster.title;
   posterQuote.innerText = poster.quote;
 }
 
-
+// This function runs when the save button is clicked, as coded in the click
+// handler. The savedPostersView is unhidden and the mainPostersView is hidden. This
+// means that the user now only sees the savedPostersView.
 function showSavePage() {
   savedPostersView.classList.remove('hidden');
   mainPosterView.classList.add('hidden');
 }
 
-
+// This function is called when the showMainBtn or backToMainBtn is clicked, as coded
+// in the click handler function. The posterFormView and savedPostersView is hidden,
+// so the user only sees the mainPosterView.
 function backHome() {
   mainPosterView.classList.remove('hidden');
   savedPostersView.classList.add('hidden');
   posterFormView.classList.add('hidden');
 }
 
-
+//This function is called when the showFormBtn is clicked. Since this can only
+//be evoked from the mainPosterView, the posterFormView is already hidden. This function
+//hides the mainPosterView and shows the posterFormView.
 function showFormPage() {
   posterFormView.classList.remove('hidden');
   mainPosterView.classList.add('hidden');
 }
 
-
+// This function is called when the makePosterBtn is clicked, as coded in the
+// click handler. It prevents the default event from occuring. It instanciates a new
+// poster in the poster class buy taking the text input and then using it as the new
+// values for the image, user, and title. The backHome function is then called, so
+// the main page is shown again. Then, the displayPoster function is called with
+// currentPoster as the argument. The pushUserInput function is called, and the
+// user inputs are pushed into the images, titles, and quotes array.
+// Finally, the formSelect variable (for the HTML form class) is reset.
 function captureUserInput(event) {
   event.preventDefault();
   currentPoster = new Poster(
@@ -211,21 +225,27 @@ function captureUserInput(event) {
   formSelect.reset();
 }
 
-
+// The user inputs are pushed into the images, titles, and quotes arrays. The data input
+// by the user can be accessed and used again since the data has been added to the arrays.
 function pushUserInput() {
   images.push(userImageUrl.value);
   titles.push(userTitle.value);
   quotes.push(userQuote.value);
 }
 
-
+// If the currentPoster being saved is not included in the savedPosters array, then
+// that currentPoster is added to the savedPosters array. This function runs when
+// savePosterBtn is clicked.
 function saveNewPoster() {
   if (!savedPosters.includes(currentPoster)) {
     savedPosters.push(currentPoster);
   }
 }
 
-
+// First posterGrid is assigned the value of an empty string. A for loop is used to
+// loop through the savedPosters array. After looping through the savedPosters array
+// we declare a variable and assign it to an interpolated section of HTML. The newSavedPoster
+// variable is inserted after the posterGrid is reassigned.
 function showPosterGrid() {
   posterGrid.innerText = '';
   for (var i = 0; i < savedPosters.length; i++) {
@@ -240,7 +260,12 @@ function showPosterGrid() {
   }
 }
 
-
+// This function takes place once a poster in the savedPostersView is double clicked. The
+// poster is removed from the savedPosters array. We used a loop to recognize the event
+// of a dblclick and apply it to the .mini-poster that it is closest to. The function loops
+// through the savedPosters array, and if a poster has the same id as the .mini-poster
+// closest to the event of the dblclick, then that instance is deleted using splice. The
+// showPosterGrid function is called and the new array is returned.
 function deletePoster(event) {
   if (event.target.closest('.mini-poster')) {
     var savedPostersHTML = event.target.closest('.mini-poster');
