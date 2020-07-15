@@ -18,6 +18,8 @@ We designed the functionality of a webpage using JavaScript with some HTML. Most
 - Viewed saved posters on a separate page
 - Delete saved covers
 
+We also implemented form-validation as an optional extension.
+
 ## Learning
 
 - Write clean, DRY JavaScript to store our data
@@ -70,3 +72,6 @@ Double clicking on a poster will delete it from the Saved Posters view.
 <br />
 ![image of home page](assets/hang-in-there-screenshots/hang-in-it4.1-3.png)
 <br />
+
+Leaving an input field blank will result in an alert.
+![image of form validation](assets/hang-in-there-screenshots/form-valid.png)
