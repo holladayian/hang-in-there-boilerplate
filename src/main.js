@@ -145,7 +145,8 @@ function clickHandler(event) {
     randPoster();
   }
   if (event.target === makePosterBtn) {
-    captureUserInput(event)
+    validateInput(event);
+    //captureUserInput(event);
   }
   if (event.target === savePosterBtn) {
     saveNewPoster();
@@ -275,5 +276,25 @@ function deletePoster(event) {
       }
     }
     showPosterGrid();
+  }
+}
+
+
+// This function implements data validation by checking the length of the input data and
+// showing an alert if any of the input fields are left empty by the user.
+function validateInput(event) {
+  event.preventDefault();
+  if (userQuote.value.length && userTitle.value.length && userImageUrl.value.length) {
+    captureUserInput(event)
+  } else {
+    if (userQuote.value.length == 0) {
+      alert('Looks like you forgot your quote!');
+    }
+    if (userTitle.value.length == 0) {
+      alert('Looks like you forgot your title!');
+    }
+    if (userImageUrl.value.length == 0) {
+      alert('Looks like you forgot your picture!');
+    }
   }
 }
