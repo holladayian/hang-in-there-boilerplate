@@ -74,4 +74,4 @@ Double clicking on a poster will delete it from the Saved Posters view.
 <br />
 
 Leaving an input field blank will result in an alert.
-![image of form validation](assets/hang-in-there-screenshots/form-valid.png)
+![image of form validation](readme-imgs/form-valid.png)
