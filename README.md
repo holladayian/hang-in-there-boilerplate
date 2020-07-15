@@ -44,6 +44,7 @@ We designed the functionality of a webpage using JavaScript with some HTML. Most
 ## Contact us on GitHub at:
 
 https://github.com/kathrynljackson - Kathryn Jackson
+
 https://github.com/holladayian - Ian Holladay
 
 ## Pictures & Gifs
